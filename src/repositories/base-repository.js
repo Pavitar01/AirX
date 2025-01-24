@@ -7,16 +7,10 @@ class BaseRepository {
 
   create = async (data) => {
     try {
-      console.log(this.model)
       const response = await this.model.create(data);
       return response;
     } catch (error) {
-      console.log(error);
-      loggerConfig.logger.error(
-        `Something went wrong in creating data for this model ${this.model}`,
-        error
-      );
-      return error;
+      throw error;
     }
   };
 
@@ -27,12 +21,7 @@ class BaseRepository {
       });
       return response;
     } catch (error) {
-      console.log(error);
-      loggerConfig.logger.error(
-        `Something went wrong in deleting data for this model ${this.model}`,
-        error
-      );
-      return error;
+      throw error;
     }
   };
 
@@ -41,12 +30,7 @@ class BaseRepository {
       const response = await this.model.findOne(data);
       return response;
     } catch (error) {
-      console.log(error);
-      loggerConfig.logger.error(
-        `Something went wrong in getting data for this model ${this.model}`,
-        error
-      );
-      return error;
+      throw error;
     }
   };
 
@@ -55,12 +39,7 @@ class BaseRepository {
       const response = await this.model.findAll();
       return response;
     } catch (error) {
-      console.log(error);
-      loggerConfig.logger.error(
-        `Something went wrong in getting All data for this model ${this.model}`,
-        error
-      );
-      return error;
+      throw error;
     }
   };
 
@@ -73,12 +52,7 @@ class BaseRepository {
       });
       return response;
     } catch (error) {
-      console.log(error);
-      loggerConfig.logger.error(
-        `Something went wrong in updating data for this model ${this.model}`,
-        error
-      );
-      return error;
+      throw error;
     }
   };
 }
